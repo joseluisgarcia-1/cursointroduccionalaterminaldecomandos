@@ -800,16 +800,6 @@ https://www.oreilly.com/library/view/learning-the-vi/9780596529833/
 https://www.oreilly.com/library/view/linux-pocket-guide/9781491927557/
 https://www.oreilly.com/library/view/regular-expression-pocket/9780596514273/
 
-me falló la del signo >
-la interfaz de comandos 
-una de falso o verdadero 
-
-19.
-¿Qué comando nos ayuda consultar la disponibilidad de un equipo en una red?
-traceroute
-ifconfig y traceroute, mal
-la respuesta correcta es ping
-
 
 para copiar una carpeta dentro de otra carpeta o simplemente copiar una carpeta usamos el siguiente comando:
 mkdir copia
@@ -817,3 +807,4 @@ mkdir copia2
 cp -r copia copia2
 
 con esto hemos copiado la carpeta copia dentro de copia2
+
