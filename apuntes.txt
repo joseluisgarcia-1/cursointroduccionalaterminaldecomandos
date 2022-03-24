@@ -1,0 +1,819 @@
+***Clase 1 ¿Qué es la terminal?***
+
+¿Por qué debo aprender esto?
+- Flexibilidad
+- Velocidad
+- No siempre cuentas con una interfaz gráfica
+
+La terminal:
+
+- Es una interfaz gráfica que simula una línea de comandos
+- Cuando hablamos de una línea de comandos nos referimos a la shell
+Línea de comandos(shell): Un programa que toma comandos y los pasa al sistema operativo para hacer algo
+
+Tipos de shell:
+- Bourne shell
+- Bash shell (de las más comunes)
+- Z shell (de las más comunes)
+- C shell
+- Korn shell
+- Fish shell
+- PowerShell
+
+***Clase 2 aprendiendo a caminar en la terminal***
+recomendado: https://www.geeksforgeeks.org/linux-file-hierarchy-structure/
+
+sistema de archivos:
+todas las carpetas inician con un /
+carpeta home:
+- con ctrl + l: limpio la pantalla al igual que escribir clear
+- con history: podemos ver el historial de los comandos que he ejecutado y guarda los primeros 1000
+- con ls -l: podemos ver cuánto pesa un archivo en bytes
+- con ls -lh: podemos ver cuánto pesa un archivo en mb
+- con cd: me devuelve a la carpeta principal
+- con file ./Carpeta/dato -> podemos ver también que tipo de archivo es el archivo dado
+otro ejemplo de file
+
+E:\>file ./"libros de python"/makinggames.pdf
+./libros de python/makinggames.pdf: PDF document, version 1.5
+
+- con file: podemos ver que tipo de archivo tenemos por ejemplo lo usamos así: file kme_/ = kme_/: directory
+
+- con mkdir y dejando espacio entre nombres de carpetas me crea muchas por ejemplo así:
+mkdir carpeta1 carpeta2 carpeta3 carpeta4 
+con eso me crea esas 4 carpetas de una vez
+
+- con touch pasa exactamente igual: si colo touch y nombres separados me crea cuantos yo ponga, por ejemplo:
+touch archivo1.txt archivo2.txt archivo3.txt archivo4.txt
+con eso me crea 4 archivos simultaneamente
+
+- para mover un archivo con comandos hay que especificar una ruta completa y para mi funcionó así em cmder
+en el disco E: creé el archivo1.txt y lo moví a la carpeta fotos así: mv archivo1.txt fotos/
+ahora para pasarlo de esa carpeta de fotos a otra carpeta y que está ubicada en ese mismo disco hice así
+me paré en la carpeta fotos e ingresé el siguiente comando y ya con eso se pasó el documento
+E:\fotos>mv archivo1.txt e:\/"gabraciones platzi"/
+para mover carpetas es lo mismo
+
+y para copiar un archivo hice lo mismo solo que con el comando cp y lo hice así:
+me paré en la carpeta donde estaba el archivo que era "gabraciones platzi", ingresé el comando
+cp archivo1.txt e:\/fotos
+y con eso se copió el archivo en la carpeta de fotos
+
+por ejemplo si quiero eliminar todo de una carpeta o lugar con un solo comando lo puedo hacer así:
+rm -rf *
+o si quiero eliminar también todos los archivos con una extensión específica lo puedo hacer así:
+rm *.txt
+o para eliminar todas las carpetas así 
+rm -rf * mkdir ó rm -rf *
+
+- para eliminar un archivo se hace con el siguiente comando:
+rm -f nombre_del_archivo
+- para eliminar una carpeta es con el siguiente código
+rm -rf nombre_de_la_carpeta
+- para copiar una carpeta que tiene más carpetas adentro y esas carpetas tienen archivos lo hago con el siguiente comando
+cp -a carpeta1 /ruta/de carpeta/carpeta_donde_va
+
+- para copiar un archivo desde una carpeta a otra sin estár necesariamente parado dentro de la carpeta si lo puedo hacer y lo hice así:
+estaba en el home y lo que hice fue decirle: copie de la carpeta3 el archivo ejemplo.txt a la carpeta que está en el home
+usuario theliom y a la carpeta5
+cp carpeta3/ejemplo.txt /home/theliom/carpeta5/
+
+otro ejemplo fue el siguiente:
+cp /home/theliom/lio_messi.txt /home/theliom/carpeta3/carpeta1/touch
+
+le dije que el archivo lio_messi.txt que está en el /home/theliom/ lo copie en la carpeta que está en el /home/theliom/
+en la carpeta3 que contiene la carpeta1 y en la carpeta1 que contiene la carpeta touch, ahí en esa carpeta touch pegue el archivo
+
+- para moverlo fue lo mismo y este es el ejemplo
+mv /home/theliom/carpeta3/carpeta1/touch/ronaldo.txt /home/theliom/
+
+- para organizar mis carpetas por tamaño de mayor a menor (es decir de peso) lo hago con el comando:
+ls -lS
+
+- para organizar mis carpetas por nombre de "a" a "z" lo hago con el comando:
+ls
+
+- para organizar mis carpetas por nombre de "z" a "a" lo hago con el comando:
+ls -lr
+
+- para ver como está organizada una carpeta en modo de arbol y bien específico lo hacemos con el siguiente comando:
+tree -L 4
+
+el numero 4 quiere decir el número de niveles que quiero que organice si tiene menos niveles entonces se lo organiza hasta donde tenga
+si por ejemplo ese tree no funciona o no corre es porque mi linux o ubuntu está desactualizado entonces lo que hago es actualizarlo así:
+
+- sudo apt update
+- sudo apt install tree
+
+y ya con eso queda
+
+- estando yo en cualquier carpeta y pasandole la ruta exacta de un comando ejecuta la acción, por ejemplo:
+rm -f /home/theliom/j/archivo5.css
+
+- otro ejemplo para tener en cuenta, si por ejemplo: yo tengo un archivo y ese archivo por error lo copio en una carpeta que no quería
+y quería era colocarlo en la carpeta inmediatemente anterior o que la antecede, entonces lo muevo así:
+
+mv nombre_del_archivo ..
+
+- para renombrar un archivo y carpeta es así:
+mv nombre_archivo_a_renombrar nuevo_nombre_del_archivo
+
+- para borrar o eliminar un archivo es con:
+rm nombre_del_archivo
+
+- para borrar o eliminar un archivo y que le salga como que: "estás seguro de borrar el archivo" es así:
+rm -i nombre_del_archivo
+le damos "y" y listo, se borrar el archivo
+
+- para listar lo que hay en una carpeta de otra carpeta lo puedo hacer así:
+por ejemplo estoy en carpeta1 y en carpeta1 está carpeta2 para ver lo que tiene carpeta2 entonces lo hago así:
+carpeta1: ls carpeta2
+y con eso me muestra lo que hay en esa carpeta sin necesariamente entrar a la carpeta2
+
+- para crear una carpeta desde cualquier lugar puedo hacerlo así: pasándole la ruta exacta donde quiero que se cree
+ mkdir /home/theliom/new_folder/
+y si quiero crear más carpetas simultaneamente también lo puedo hacer así:
+mkdir /home/theliom/new_folder1/  mkdir /home/theliom/new_folder2/
+entender que aquí le estoy diciendo en /home/theliom/ creeme la carpeta new_folder1 y new_folder2
+
+- para colocar una carpeta dentro de otra o mover una carpeta dentro de otra es así:
+mv carpeta1 carpeta2
+
+tener en cuenta que eso es para mover carpetas con el mismo comando que se renombran archivos, no confundirse
+
+- para copiar archivos de una carpeta a otra es así:
+lo que le digo es que de la carpeta home del usuario theliom de la carpeta new_folder1 copie el archivo dir2.txt y lo coloque dentro de la
+carpeta que está dentro de home del usuario theliom en la carpeta_de_prueba
+cp /home/theliom/new_folder1/dir2.txt /home/theliom/carpeta_de_prueba/
+
+-para borrar carpetas o archivos también lo podemos hacer así:
+
+rm -ri new_folder
+
+y si tiene esa carpeta más archivos adentro, también los va borrando
+
+-para crear un archivo dentro de una carpeta desde cualquier lugar es así:
+touch /home/theliom/uno/uuuu.py
+
+entonces ahí lo que le estoy diciendo es: cree un archivo uuuu.py en la carpeta /home/theliom/ en la carpeta uno
+
+***Clase 3 ***
+para borrar de un solo golpe varios archivos podemos hacerlo así:
+rm -rf carpeta1 carpeta2 carpeta3 uno.py
+
+pasamos los datos en una sola línea y ya los borra, si por ejemplo solo le paso rm nombre_de_la_carpeta
+no me va dejar borrar si esa carpeta tiene archivos, entonces si quiere borrar con todo y archivos le puedo pasar así:
+rm -rf nombre_de_la_carpeta y si quiere borrar e ir preguntando que se quiere borrar y que no, pasamos lo siguiente
+rm -ri nombre_de_la_carpeta y ahí va preguntando que queremos borrar y le vamos pasando la n o y
+
+- para ver archivos podemos usar tanto head como tail, la diferencia es que con head miramos las primeras 10 líneas del texto
+y con tail miramos las 10 ultimos líneas del texto, sin embargo, también le podemos pasar tanto con head como con less
+si queremos ver de la parte inicial o final del texto cuántas líneas de texto queremos ver, van los ejemplos:
+
+head texto.txt -> muestra las primeras 10 líneas por defecto
+head texto.txt -n 20 -> muestra las primeras 20 líneas del texto, pero porque aquí ya le indicamos cuántas líneas queremos que muestre
+tail texto.txt -> muestra las últimas 10 líneas por defecto
+tail texto.txt -n 20 -> muestra las últimas 20 líneas del texto, pero porque aquí ya le indicamos cuántas líneas queremos que muestre
+
+less -> sirve para visualizar archivos y podemos buscar si se quiere, una palabra específica colocando al final del texto
+que tengamos el / y para salir solo colocamos la letra q y listo
+
+- para abrir por ejemplo un archivo específico en mi editor de texto desde la consola de linux o ubuntu, le pasamos el siguiente comando
+xdg-open nombre_del_archivo
+
+y para hacer la misma tarea en cmder y cmd de windows de que abra mi archivo en mi editor de texto por defecto para ese tipo de extensión es así:
+nombre_del_archivo .
+
+- al ejecutar el comando nautilius nos abre la carpeta dada de manera gráfica y se ejecuta así:
+nautilius  nombre_de_la_carpeta
+
+***Clase 4***
+Un comando puede ser 4 cosas:
+- Un programa ejecutable
+- Un comando de utilidad de la shell
+- Una función de shell
+- Un alias
+
+El comando que nos muestra la naturaleza de otro comando es type, y para saber para que es un comando
+podemos hacerlo así: type cd -> cd is a shell builtin
+type mkdir -> mkdir is /usr/bin/mkdir
+type ls -> ls is aliased to `ls --color=auto'
+- para crear un alias es así: alias borrar="rm"
+lo que está en medio de las comillas es el comando que ejecuta el alias y borrar es el nombre del alias
+ejemplo: alias listar="ls"
+theliom@DESKTOP-OPNS9OF:~$ listar /home/theliom/copia/
+en ese ejemplo, lista lo que está en la carpeta copia
+se debe tener en cuenta que los alias no se guardan para siempre, estos se borran cuando se cierra la consola
+
+- Para pedir ayuda acerca de los comandos usamos el comando help, y para saber como se usa otro comando
+usamos por ejemplo: help cd, help return
+esto es por ejemplo en algunas shell porque todas shell tienen una configuración diferente
+- Para saber el manual de usuario de un comando usamos otro comando que es man
+por ejemplo: man cd
+
+***Clase 6 Wilcards***
+es una serie de caracteres especiales que nos permite encontrar patrones o realizar búsquedas mucho más avanzadas
+por ejemplo archivos que terminen en txt, py, html, etc.
+
+Un ejemplo de ello es así: entro a la carpeta o carpetas y ejecuto el siguiente comando:
+ls *.py
+ls *.txt
+ls *.html
+etc.
+hay que recordar que el asterisco hace referencia a "todo", por eso con las extensiones hacen referencia como que listeme
+todo lo que tenga extensión .py, .html, .txt, etc
+así se pone en ejecución de acuerdo a la extensión o tipo de archivo que queremos visualizar
+lo mismo podemos hacer por ejemplo si hay varios archivos con un nombre específico en una misma carpeta, entonces le pasamos el
+nombre con asteriscos y es así: 
+Aquí primero creamos los archvivos
+theliom@DESKTOP-OPNS9OF:~/clase6$ touch cinco_uno.py cinco_dos.py cinco_tres.py tres_uno.py tres_dos.py
+Aquí los llamamos
+theliom@DESKTOP-OPNS9OF:~/clase6$ ls cinco**
+Aquí ya los obtenemos
+cinco.py  cinco_dos.py  cinco_tres.py  cinco_uno.py
+
+También tenemos si por ejemplo queremos ver un archivo con un nombre específico pero que tiene una cantidad explícita de caracteres extras es así:
+ls cinco???
+cinco
+ls cinco???????
+cinco_uno.py cinco_dos.py
+
+- Para buscar o visualizar archvivos o carpetas que sus nombres empiecen con mayúsculas o minúsculas lo hacemos así:
+ls [[:lower:]]*
+ls [[:upper:]]*
+
+también tenemos que si queremos visualizar solo las carpetas que sus nombres inicien con mayúsculas o minúsculas lo hacemos así:
+ls -d [[:upper:]]*
+ls -d [[:lower:]]*
+
+- para filtrar archivos o carpetas que sus nombres inicien con una a o d lo hacemos así:
+ls [ad]*
+archivo.txt  archivo6.java
+
+***Clase 7 Redirecciones, cómo funciona la shell***
+Standard Input = stdin, en la terminal se identifica con un 0
+Standard output = stdout, en la terminal se identifica con un 1
+Standard error = stderr, en la terminal se identifica con un 2
+
+para redireccionar lo hacemos con el siguiente comando, aunque en este caso nos guardó los nombres de los archivos en otro archivo
+en la carpeta clase6 tenía estos archivos
+cinco.py  cinco_dos.py  cinco_tres.py  cinco_uno.py  cuatro.py  dos.txt  tres.py  tres_dos.py  tres_uno.py  uno.txt
+y en el archivo mis_archivos.txt con el comando: ls clase6 > mis_archivos.txt 
+guardó los nombres de esos archivos, cabe recalcar que el archivo "mis_archivos" se creó solo con ese comando anterior
+y tomó los nombres que habían en la carpeta clase6, tener en cuenta que si por ejemplo, uso otra carpeta para hacer la misma tarea
+pero dejo el archivo con el mismo nombre: mis_archivos.txt lo que hace el comando es reemplazar o sobreescribir la información que estaba 
+ahí consignada, entonces si a la información que ya estaba le quiero agregar información de otra carpeta o valga la redundancia más información
+lo hacemos con el comando así: 
+ls copia >> mis_archivos.txt
+
+
+***Clase 8 Redirecciones: pipe operator***
+
+Echo "Hola amigos" -> Nos imprime como si fuese un print de python
+Hola amigos
+less mis_archivos.txt -> nos permite visualizar lo que hay en ese documento o archivo
+cat -> así solo nos permite visualizar un archivo o información
+
+cat mis_archivos.txt otros_archivos.txt -> así nos permite unir información de dos archivos concatenar 
+o unir dos archivos, unir información, ejemplo:
+entonces tenemos la información de ambos archivos junta, pero no los guarda, unicamente los une
+
+ejecución del pipe operator
+el pipe operator nos va permitir que el Standard output se convierta en Standard Input de otro comando
+por ejemplo si queremos ver un documento sin guardarlo lo podemos redireccionar de la siguiente manera
+ls -lh | less 
+y recordar que cuando estamos en el less para buscar una palabra especifica hacemos uso de / y escribimos
+la palabra que queremos encontrar
+
+otro ejemplo es que si luego de ver el archivo con less y quisieramos guardarlo lo podemos hacer de la siguiente manera:
+ls -lh | less | tee nuevo_archivo.txt
+
+Otro ejemplo también es el siguiente para obtener el documento ordenado, donde creó también el archivo titulado como "otro_archivo" y le puso la información
+al final le puse cat pero también lo puedo ver con less
+ls -lh clase6 | sort | tee otro_archivo.txt | cat
+
+- Por último instalamos dos herramientas: cowsay y lolcat
+sudo apt install cowsay
+sudo apt install lolcat
+
+cowsay -> nos muestra un vaca con el texto que nosotros le pasemos
+ejemplo: cowsay "te amo samara"
+lolcat -> nos muestra el texto de color
+echo "te amo samara" | lolcat
+si lo ejecuto varias veces en la consola me muestra el texto de color diferente
+
+Ahora pondré en práctica los dos y es así: cowsay "te amo samara" | lolcat
+lo que me arroja la vaca diciendo "te amo samara" pero en colores
+< te amo samara >
+ ---------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+si por ejemplo queremos guardar esa vaquita en un archivo txt lo hacemos así: 
+echo "te amo samara" | lolcat | tee vaca.txt
+tener en cuenta que el tee es el que da la orden de que se cree el archivo
+
+***Clase 9 encadenando comandos: operadores de control***
+
+- Podemos correr comandos sincronamente, asincronamente e incluso con condicionales
+- ejemplo: ls; mkdir nueva_carpeta; cal
+lo que le decimos en el anterior ejemplo es que liste lo que hay en la carpeta en donde estamos, que cree una carpeta nueva y que nos muestre un calendario
+todo eso lo ejecuta junto.
+
+también lo podemos ejecutar con condicionales, y usamos el amperson & es decir que lo que le pide es
+listeme y cree y muestre y así sucesivamente, ejemplo:
+
+ls & mkdir barca & cal & date | lolcat 
+en este ejemplo lo que hizo fue: listar y crear carpeta barca, y mostrar un calendario y mostrar la fecha en colores con el comando lolcat
+otro ejemplo: 
+mkdir real && cd real && touch /home/theliom/real/archivo_py.py
+en este ejemplo:
+crear carpeta real y entrar a real y crear un archivo llamado archivo_py en la carpeta real
+en caso de que la primera condición no se cumpla cuando usamos doble && los demás comandos no se ejecutan
+sin embargo, si colocamos solo una & si ejecuta las condiciones o comandos que se le está diciendo
+
+ejemplo de or:
+cd bayer || cowsay "Samara es hermosa"
+en este caso aunque la primera condición no se cumplió mostró la vaca, 
+< Samara es hermosa >
+ -------------------
+        \   ^__^
+         \  (oo)\_______
+            (__)\       )\/\
+                ||----w |
+                ||     ||
+
+pero lo que quiere decir es: entre a la carpeta bayer o muestre con cowsay lo que le digo y ya termina
+a mi modo de entender para generar o ejecutar comandos asincronamente tenemos:
+
+- &
+ejemplo: ls & date & cal
+nos lista los elementos de la carpeta en donde estemos, y nos muestra la fecha, y un calendario
+
+ejecutar comandos de manera condiconal:
+
+- &&
+ejemplo: mkdir test && cd test && ls test
+lo que le dije si crea una carpeta llamada test y si la crea ingrese a test y si entra a test listeme lo que tenga esa carpeta, si una condición no se cumple se rompe todo
+
+- || -> or
+
+
+de manera sincrona:
+
+- ;
+ejemplo: ls; mkdir prueba; cal
+nos lista los elementos de la carpeta en donde estemos, nos crea una carpeta con nombre prueba, y nos muestra un calendario
+
+Comandos separados por punto y coma “;” : Se ejecutan uno seguido del otro en el orden en que fueron puesto. Uno no se ejecuta hasta que el otro proceso aya terminado.
+–
+Comandos separados por & : Se ejecutan todos al mismo tiempo, es decir de forma asíncrona.
+–
+Comandos separados por && : Se ejecutan solo si el comando anterior se aya ejecutado exitosamente. Suponemos que A, B y C son comando:
+A && B && C
+El B solo se va ejecutar si el A se ejecuta exitosamente, y el C solo se va ejecutar si el B si ejecuta exitosamente. Si el B no se ejecuta exitosamenta el C no se ejecuta. Si el A no se ejecuta exitomante el 
+B y el C no se ejecutan.
+–
+Comandos separados por || : Solo se ejecuta uno. Sea cuantos comandos tienes separados por || solo ejecuta o toma en cuenta el primer que se ejecuta exitosamente (bajo la redundacia), y descarta automaticamente los 
+demas. Cuando uno de los comandos se ejecuta exitosamente, descarta los demas comandos.
+
+***Clase 10 Cómo se manejan los permisos***
+Tipos de archivos:
+-: un archivo normal
+d: un directorio
+l: un link simbólico
+b: Un archivo de bloque especial. Son archivos que manejan la información de los bloques de datos USB
+
+tipos de modos de los archivos:
+r = read -> read
+w = write -> write
+x = execute -> ejecutar
+
+también manejados como los permisos que tiene cada archivo
+por ejemplo, si en una tabla donde esté rwx estos por su orden también tienen por ejemplo 111 es porque tiene esos permisos activos
+si por ejemplo en una tabla tiene r-x esto quiere decir que r y x tiene los permisos activos y w no, por lo que en binario estaría así: 101
+o cuando no tienen permiso entonces esa letra tiene el número 0 y se identifica según su orden, u otra manera es que si aparece el guión en lugar
+de la letra es porque ese archivo no tiene ese permiso
+
+modo octal:
+el bit de la izquierda: 4
+el bit del medio: 2
+el bit de la derecha: 1
+cuando el bit está en 0 se lo suma normal ese 0
+ejemplo:
+dueño: |r|w|x| -> |1|1|1| = 7
+grupo: |r|-|x| -> |1|0|1| = 5
+world: |r|-|x| -> |1|0|1| = 5
+ejemplo:
+octal|binario|permisos|
+|0|000|---
+|1|001|--x
+|2|010|-w-
+|3|011|-wx
+|4|100|r--
+|5|101|r-x
+|6|110|rw-
+|7|111|rwx
+
+modo simbólico:
+
+u = permisos solo para usuario
+g = permisos solo por el grupo
+o = solo para otros (es el world)
+a = permisos para todos
+
+recomendados de la clase:
+
+https://platzi.com/clases/1098-ingenieria/6549-que-son-bits-y-bytes/
+https://platzi.com/tutoriales/1667-linux/8811-cosas-que-nos-sabias-sobre-el-sistema-de-permisos-de-linux-realmente-es-octal/
+https://docs.google.com/document/d/1ewCDSkOqYJjc9gacWDsPE04BjYbN_2UONEF8J57lGaw/edit
+
+***Clase 11 manejando permisos en la terminal***
+
+Para ver los formatos o permisos de un archivo, es decir si tiene rwx es así:
+ls -l 
+
+Para ponerle o modificar permisos a un archivo lo hacemos con el comando chmod, así:
+chmod 755 archivo.txt
+en este caso lo que le colocamos a ese archivo es rwx es decir, lectura, escritura y ejecución, solo para el usuario
+quedó así: -rwxr-xr-x
+y estaba así: -rw-r--r--
+
+por ejemplo si quisiera quitarle un solo permiso especifico a una archivo y a un modo es así:
+chmod u-r archivo.txt -> esto quiere decir que al usuario(u) quítele el permiso (r) en el archivo.txt
+recordar que los modos son:
+
+u = permisos solo para usuario
+g = permisos solo por el grupo
+o = solo para otros (es el world)
+a = permisos para todos
+
+para colocarle un permiso a un archivo es así:
+chmod u+r archivo.txt -> esto quiere decir que al usuario(u) colóquele el permiso (r) en el archivo.txt
+y así para los otros, y si por ejemplo queremos colocarle de una vez a todos el permiso lo hacemos así:
+chmod a+w archivo.txt
+
+si por ejemplo de forma más dinámica queremos colocarle dos o más permisos a un archivo o carpeta con un solo comando es así:
+ejemplo: chmod go+r,u-w carpeta
+lo que le estoy diciendo es que a la carpeta agréguele r en el modo o permiso g y o, y quítele w al modo u
+ejemplo:
+chmod gou+w,a-x new_folder/
+lo que le estoy diciendo es que al modo gou pongale el permiso de w y a todos(a) quíteles x en la carpeta new_folder
+tener en cuenta que se separa con coma(,) y va pegado, es decir, sin espacios.
+cuando una carpeta o archivo no tiene el permiso x no se puede ingresar a ella o él
+esto funciona tanto para los archivos como para las carpetas
+
+Si una carpeta no tiene el permiso r no la deja eliminar
+
+Ahora pasamos a aprender como cambiar de usuario:
+pero primero tenemos que aprender a identificar que usuario somos y es con el siguiente comando:
+- whoami -> theliom
+para saber el id de nuestro sistemas operativo o también como nuestro usuario es con:
+- id -> uid=1000(theliom) gid=1000(theliom) groups=1000(theliom),4(adm),20(dialout),24(cdrom),25(floppy),27(sudo),29(audio),30(dip),44(video),46(plugdev),117(netdev)
+
+para cambiarnos a otro usario es así:
+su user
+
+***Clase 12 Variables de entorno***
+Para guardar todas nuestras variables de entorno en un archivo de texto podemos ejecutar el comando:
+env > environment.txt
+
+Es un archivo que direcciona hacia un lugar
+link simbólico: es un acceso directo desde la terminal y se coloca el dato en azul agua marina o rojo y se hace así
+ln -s carpeta/carpeta nombre_link_simbólico
+ln -s pts/dev desarrollo
+lrwxrwxrwx 1 theliom theliom    7 Mar 17 13:33 desarrollo -> pts/dev
+
+cuando lo listamos al inicio de los permisos aparece con l y activos todos los permisos, aunque son permisos que no tiene valor
+porque los enlaces simbólicos como tal no tienen permisos
+
+Ahora si vamos a las variables de entorno:
+
+- para ver las variables de entorno es con el comando: printenv
+- para imprimir una variable de entorno o los datos de una de ellas es así:
+echo $HOME
+echo $PATH
+
+Cómo modificar las variables de entorno y al mismo tiempo como concatenar path
+
+las variables de entorno las puedo modificar:
+para verlas lo hago así: ls -la -> con esto me muestra hasta los archivos ocultos que tengo en mi sistema o carpeta
+y para modificarlas es en el archivo: .bashrc que lo puedo abrir con nano
+este archivo lo puedo abrir con nano y puedo crear alias como una variable de entorno, a modo de ejemplo la que yo creé fue
+la siguiente:
+
+variable de entorno -> PLATZI_MESSAGE="Samara es hermosa"
+alias -> alias l='ls -lh'
+en la terminal de comandos para ejecutar esos cambios lo que debo hacer es escribir: bash
+para que refresque los cambios
+para ejecutar esas dos comandos por así decirlo lo hice así:
+para la variable de entorno fue así: echo $PLATZI_MESSAGE
+recordar que cuando queremos ver en la terminal lo que tiene una variable de entorno le debemos colocar antes el signo $
+otro ejemplo: echo $PATH
+y para el alias si no más es colocar la l y ya
+
+- para crear una variable de entorno que me apunte a una carpeta especifica lo hice así: 
+PATH=$PATH:/home/theliom/bina -> donde bina viene siendo la carpeta destino que puse como ejemplo7
+
+***Clase 13 Comandos de búsqueda***
+
+los usamos para ver archivos, crearlos, mover carpetas, crear permisos, entre otros.
+estos nos ayudan a encontrar archivos o carpetas incluso filtrarlos por nombre, extension, etc.
+generalmente los archivos .log guardan nuestro historial, por lo que aveces es bueno eliminarlo
+
+los comandos son los siguientes:
+- which
+con which podemos saber en donde está ubicado un archivo, por ejemplo: which xdg-open = /usr/bin/xdg-open
+- find -> nos permite encontrar un archivo, y lo primero que le debemos colocar es la ruta desde donde podemos empezar a buscar ese archivo
+por ejemplo: 
+creé las carpetas
+theliom@DESKTOP-OPNS9OF:~$ mkdir uno
+theliom@DESKTOP-OPNS9OF:~$ mkdir dos
+theliom@DESKTOP-OPNS9OF:~$ mkdir tres
+creé los archivos
+theliom@DESKTOP-OPNS9OF:~$ touch /home/theliom/uno/archivo
+theliom@DESKTOP-OPNS9OF:~$ touch /home/theliom/dos/archivo
+theliom@DESKTOP-OPNS9OF:~$ touch /home/theliom/tres/archivo
+ejecuté el comando
+theliom@DESKTOP-OPNS9OF:~$ find ./ -name archivo
+obtuve esto, que fue lo que encontró, todas las rutas donde hay un archivo con nombre "archivo"
+./uno/archivo
+./dos/archivo
+./tres/archivo
+
+También podemos hacer uso de wildcards para buscar archivos con una extensión específica, por ejemplo así:
+creo los archvivos
+theliom@DESKTOP-OPNS9OF:~$ touch /home/theliom/tres/file.txt
+theliom@DESKTOP-OPNS9OF:~$ touch /home/theliom/dos/file.txt
+theliom@DESKTOP-OPNS9OF:~$ touch /home/theliom/uno/file.txt
+ahora los busco, todos los archivos que tengan extensión txt
+theliom@DESKTOP-OPNS9OF:~$ find ./ -name *.txt
+y los encuentra
+./uno/file.txt
+./dos/file.txt
+./tres/file.txt
+también los podemos visualizar en cat agregándolo al final con el pipe operator |, así:
+theliom@DESKTOP-OPNS9OF:~$ find ./ -name *.txt | cat
+
+también podemos buscar por tipo y tiene dos argumentos que es f y d
+f -> es pa que solo busque archivos o files
+d -> es pa que busque carpetas o directorios
+ejemplo para d: find ./ -type d -name media
+ejemplo para f: find ./ -type f -name apuntes.txt
+otro ejemplo es con wildcards: find ./ -type f -name *.log
+otro ejemplo es con wildcards: find ./ -type f -name *.txt
+otro ejemplo es con wildcards: find ./ -type f -name *.py
+para encontrar archivos por tamaño es así:
+find ./ -size 20M
+lo que le pedí fue que encuentre todos los archivos que de tamaño tengan 20 mega bytes
+####tener en cuenta esta ruta####
+./mnt/e/descargas/Django/Django/tests/servers/media
+
+Este es el comando whereis (en español: ¿dónde está?), este comando es algo similar a which, 
+pero mucho mejor. Este comando localiza los ficheros binarios, fuentes y páginas del manual 
+de un programa, es decir, podemos decir que hace algo así como una “búsqueda mucho más profunda”,
+me encanta porque puedes saberlo casi todo sobre la ubicación de un programa
+
+***Clase 14 su majestad grep***
+es uno de los más utiles de la terminal y nos permite encontrar coincidencias de una busqueda dentro de un archivo de texto
+o en general dentro de cualquier texto.
+- para ejecutarlo es así: grep the movies.csv
+lo que le digo es que me encuentre o busque la palabra "the" en el archivo movies.csv
+como salen muchos solo voy a pegar este resultado
+159972,Approaching the Unknown,Drama|Sci-Fi|Thriller,2016,10,52
+151307,The Lovers and the,(no genres listed),1929,8,97
+
+también: grep Towers movies.csv
+y en esta consulta lo que le digo es que me encuentre o busque la palabra Towers en el archivo movies.csv
+resultados:
+108583,Fawlty Towers (1975,Comedy,-1980,1,54
+5952,"Lord of the Rings: The Two Towers, The",Adventure|Fantasy,2002,4,81
+
+cabe recalcar que se le debe pasar la palabra exacta, es decir, si lleva mayúsculas o como esté en el archivo
+
+sin embargo, si queremos que esto no tenga importancia de como esté escrita si con mayúsculas 
+o minúsculas si pasamos el código de la siguiente manera:
+theliom@DESKTOP-OPNS9OF:~$ grep -i towers movies.csv
+y obtenemos:
+108583,Fawlty Towers (1975,Comedy,-1980,1,54
+5952,"Lord of the Rings: The Two Towers, The",Adventure|Fantasy,2002,4,81
+
+si por ejemplo lo que yo quiero saber es no cuantas líneas coinciden con mi búsqueda si no el número exacto es así:
+grep -c the movies.csv
+grep -c car movies.csv
+
+en este ejemplo anterior hay que recalcar que se debe escribir la palabra que queremos buscar exactamente como está en el texto
+
+y si por ejemplo quiero saber también sin importar si está escrita con mayúsculas o minúsculas es así:
+con estos dos ejemplos sirve:
+theliom@DESKTOP-OPNS9OF:~$ grep -c -i comedy movies.csv
+3315
+theliom@DESKTOP-OPNS9OF:~$ grep -ci comedy movies.csv
+3315
+
+Ahora vamos a ver como nosotros encontramos todas aquellas busquedas que no coinciden es así:
+grep -vi towers movies.csv
+lo que hacemos aquí es filtrar las no coincidencias de la palabra towers en el archivo y lo guardamos en un archivo llamado sin_towers.txt
+tener en cuenta que el símbolo que se encarga de generar el archivo es el mayor qué > 
+grep -vi towers movies.csv > sin_towers.txt
+
+- Para saber cuántas líneas, caracteres, bits y titulo del archivo es con el siguiente código:
+
+wc movies.csv -> nos dice cuántas líneas, caracteres, bits y titulo del archivo
+wc -l movies.csv -> nos dice cuántas líneas tiene el archivo
+wc -w movies.csv -> nos dice cuántos caracteres tiene el el archivo 
+wc -c movies.csv -> nos dice cuántos bits tiene el archivo
+
+con grep también podemos filtrar una línea específica, o incluso si tenemos un console.log() podemos filtrar ese error
+
+colocando solo el > podemos crear un archivo, por ejemplo así: 
+theliom@DESKTOP-OPNS9OF:~/dos$ > archivo.txt
+theliom@DESKTOP-OPNS9OF:~/dos$ ls
+archivo  archivo.txt  file.txt
+
+recomendado de la clase: https://platzi.com/cursos/expresiones-regulares/
+https://drive.google.com/file/d/1d8Z5VyS34oAuofbFMRl7_GatYAbSRAHG/view
+
+***Clase 15 utilidades de red***
+vamos a aprender para saber si está una página activa, saber algún código, etc.
+
+ifconfig -> nos permite ver información de nuestra red, por ejemplo sale el nombre de la tarjeta de red, aparece diferente información como nuestra
+dirección ip, la máscara de red, el puerto donde se va estár transmitiendo, la dirección de transmisión especificamente, entre otros.
+
+- ping -> lo que nos dice es si una página está activa, nos muestra cuánto tiempo se demora en responder la página entre otros datos, ejemplo:
+ping www.google.com.co
+se puede usar para saber si la conexión de red que uno tiene está funcionando correctamente
+- curl -> lo que hace es traer un archivo de manera de texto a través de la red
+por ejemplo vamos a hacerle curl a: www.google.com.co y lo guardamos en un archivo de texto
+curl www.google.com.co > curl_index.html 
+y ya con eso lo podemos visualizar
+- wget -> trae desde internet un archivo como de texto, sin embargo, lo que hace es descargar el archivo automáticamente a nuestro pc y como nos indica en la consola
+el automáticamente lo guarda en un archivo con nombre index.html
+wget www.marca.com
+- traceroute -> este comando nos dice cuando nosotros visitamos una página, un sitio, o una dirección ip a todos los puntos que nos vamos a ir conectando
+o todas las pc por las que vamos a pasar para acceder el sitio o las pc que intervienen para llegar a tal sitio
+- netsat -> nos muestra los dispositivos de red pero con el siguiente comando:
+netstat -i 
+trabaja casi igual que ifconfig solo que este nos lo da en un formato ordenado o como si fuese un gráfico
+
+***Clase 16 Comprimiendo archivos***
+para comprimir los archivos podemos usar por ejemplo: tar, tar.gz, zip, rar, vamos a ver como hacerlo para cada caso
+como ejercicio haré lo siguiente:
+
+tar -> tar -cvf archivos_comprimidos.tar carpeta_nueva
+en ese caso lo que le dijimos fue comprimame lo que hay en carpeta_nueva en una carpeta que se va llamar archivos archivos_comprimidos 
+el -c es el caracter encargado de comprimir un archivo
+el v es el encargado de ver o mostrar lo que se está comprimiendo en la terminal
+el f hace referencia a que es un archivo lo que se está comprimiendo
+luego está el nombre del archivo que vamos a comprimir con su respectiva extensión y por último pasamos el nombre de la carpeta que estamos o vamos a comprimir
+con eso ya queda comprimido
+tar.gz -> este es otra opción de comprimir archivos parecida a tar, sin embargo, se le coloca una z en el comando, vamos a hacer un ejemplo
+tar -cvzf archivos_comprimidos_dos.tar.gz carpeta_nueva
+- para descomprimir un archivo tar es así:
+tar -xvf archivos_comprimidos.tar
+- para descomprimir un archivo tar.gz es así:
+tar -xzvf archivos_comprimidos_dos.tar.gz
+en el inicio del comando se le cambia la c por la x
+zip -> para comprimir en archivo zip lo hacemos de la siguiente manera
+zip -r archivos_zip.zip carpeta_nueva/
+primero colocamos el nombre queremos que tenga la carpeta con los archivos comprimidos y luego el nombre de la carpeta de donde vamos a comprimir
+para descomprimir un zip usamos el comando: unzip más el nombre de la carpeta y listo, es así:
+unzip archivos_zip.zip
+rar -> 
+- para comprimir
+rar a nombre_archivo.rar archivos_a_incluir
+rar a nombre_archivo.rar  
+- para descomprimir
+unrar x nombre_del_rar.rar
+unrar x nombre_del_rar.rar ruta donde lo queramos descomprimir
+
+***Clase 17 manejo de proceso***
+
+para ver procesos que están corriendo es así:
+
+ps -> nos muestra los procesos que están corriendo
+kill -> mata procesos o tareas que están corriendo
+kill + pid -> mata el proceso que tiene ese pid que está corriendo
+top -> nos muestra una interfaz que nos muestra todos los procesos que están corriendo y los que están usando más recursos del pc
+y presionando la tecla h nos va mostrar la ayuda de todos los comandos que puedo usar y con q salimos de este menú
+sin embargo, si en el menú presionamos u nos habilita la función de escribir o buscar un usuario y ver que procesos está corriendo ese usuario
+y nos muestra el pid, user, pr, ni, virt, shr, s, %cpu, %mem, Time+, command
+también tenemos a htop, que es la evolución de top, tiene más filtros más utilidades
+
+***Clase 18 Proceso en foreground y background***
+
+Como viste en la clase de procesos podemos correr de manera asíncrona comandos, y si estos no se completan quedarán activos dentro de los procesos de la terminal.
+
+Cuando un proceso está en ejecución sin que sea mostrado en la terminal se dice que se está ejecutando en el background. Si se muestra la ejecución del comando dentro de la terminal se dice que está en el foreground. 
+En esta clase aprenderás a cómo mover los procesos del background al foreground a tu voluntad, incluso a cómo suspenderlos.
+
+¿Te acuerdas del truco que aprendimos para tener un editor de texto supersencillo en la terminal? Lo usaremos en esta ocasión. Imagina que queremos una nota desde la terminal y para eso usamos:
+
+cat > mi_nota.txt
+Nuestra terminal se verá de la siguiente manera, con el prompt esperando a que ingresemos texto.
+1.png
+
+Podemos escribir algo y después terminar el input del texto con CTRL+D, pero en esta ocasión no haremos eso. Lo que queremos hacer será suspender el proceso, esto lo podemos hacer con CTRL+Z. El resultado que nos 
+mostrará la terminal deberá ser uno donde nos indique la suspensión del comando cat.
+Ahora hemos movido nuestro comando exitosamente al background de la terminal. Para consultar todos los procesos que tenemos en background podemos hacerlo con el comando jobs.
+jobs
+[1]+  Stopped                 cat > mi_nota_2.txt
+A la izquierda aparece el número del trabajo ( ⚠ ️ cuidado que no es lo mismo que el process ID). Si queremos traer la ejecución de nuevo a la terminal, es decir, al foreground; debemos usar el comando fg y 
+especificar qué número de trabajo queremos continuar. Para nuestro caso será el 1.
+theliom@DESKTOP-OPNS9OF:~$ fg 1
+cat > mi_nota_2.txt
+queda de nuevo el prompt esperando que escríbamos algo
+
+En caso de que estés usando ZSH como shell el formato para llamar el trabajo sería con un porcentaje. ZSH tiende a interpretar algunas cosas incluyendo las wildcards de manera diferente.
+
+fg %1
+Una vez enviado al foreground veremos como se activa la ejecución del comando en la terminal y podremos seguir escribiendo nuestra nota. Recuerda que una vez terminemos de escribir presionamos CTRL+D para terminar el
+input y guardar.
+4.png
+
+Cuando se guarda nuestra nota nos daremos cuenta de que el proceso por fin termina y si usamos jobs no nos mostrará ningún trabajo en background.
+Otras formas de enviar al background
+Existen otras formas de enviar comandos al background. La primera es usando el operador de control & al final de un comando. Este operador nos permite enviar de manera directa un proceso al background una vez 
+ejecutado. Por ejemplo:
+
+cat > mi_nota.txt &
+5.png
+La segunda forma es con el comando bg. Este sirve de manera similar que fg solo que en vez de traerlo al foreground este lleva un trabajo al background. Por ejemplo:
+
+bg 1
+Bien, la pregunta ahora es ¿Cómo usamos bg? Imagina que abrimos algún programa de interfaz gráfica desde la terminal. En mi caso abriré el navegador Google Chrome. Para hacerlo desde la terminal solo ejecuta:
+
+google-chrome-stable
+Y verás como se ejecuta pero no nos deja hacer ninguna otra tarea ya que la ventana del navegador está abierta:
+
+Screenshot from 2021-04-23 17-14-17.png
+Para suspender el proceso como ya sabes lo hacemos con CTRL+Z y si revisamos con jobs veremos como el proceso se encuentra en pausa. En este caso la ventana del navegador que se abrió no nos dejará interactuar ni 
+escribir en ella.
+
+Screenshot from 2021-04-23 17-17-05.png
+Como se ve en la imagen el navegador tiene el número de trabajo 1. Para dejar nuestro navegador corriendo y al mismo tiempo seguir trabajando en la terminal tenemos que reactivar este proceso y a la vez mandarlo al 
+background. Para ello ejecutamos:
+
+bg 1
+Con esto podremos ver como nuestro proceso de Google Chrome sigue corriendo en el background dejando la terminal disponible para nosotros.
+
+Screenshot from 2021-04-23 17-22-26.png
+¡Genial! Con esto ya sabes cómo mover procesos dentro de la terminal del foreground al background. Esto es muy útil cuando solo tenemos una terminal y necesitamos ejecutar varios comandos en paralelo. ¡Te espero en 
+la siguiente clase!
+
+***Clase 19 Editores de texto en la terminal***
+
+vi -> editor de texto de la consola pero version antigua
+vim -> editor de texto de la consola version moderna, por eso la m al final
+para salir de vim es con :q
+para crear un archivo en vim es así: vim archivo.html y para guardar ese archivo y salir lo que hacemos es lo siguiente
+presionamos esc y luego escribimos :wq y con eso ya salimos y guardamos el archivo
+para pasar al modo de inserción o de poder escribir presionamos la letra i y con eso podemos empezar a escribir
+
+recomendados de la clase: 
+
+https://linuxhint.com/vim_syntax_highlighting/
+https://www.gnu.org/software/emacs/documentation.html
+https://www.vim.org/docs.php
+https://www.nano-editor.org/
+
+***Clase 20 Personalizar la terminal de comandos***
+https://platzi.com/clases/2292-terminal/37393-personalizar-la-terminal-de-comandos/
+
+tilix -> nuevo emulador de terminal para instalar en ubuntu es: sudo apt install tilix
+iterm2 -> para mac
+
+para saber si ya tengo instalada zsh en mi máquina es con la siguiente comando: zsh --version
+para cambiar de shell es con el siguiente comando: chsh -s $(which zsh)
+con esto lo que hacemos es buscar y encontrar la ruta donde está zsh instalado y se lo va pasar al comando para que lo use
+cuando algo no quiera borrar lo podemos forzar colocándole sudo antes del comando
+
+libros recomendados
+
+https://nostarch.com/linuxbasicsforhackers
+https://nostarch.com/tlcl2
+https://www.oreilly.com/library/view/grep-pocket-reference/9780596157005/
+https://www.oreilly.com/library/view/learning-the-vi/9780596529833/
+https://www.oreilly.com/library/view/linux-pocket-guide/9781491927557/
+https://www.oreilly.com/library/view/regular-expression-pocket/9780596514273/
+
+me falló la del signo >
+la interfaz de comandos 
+una de falso o verdadero 
+
+19.
+¿Qué comando nos ayuda consultar la disponibilidad de un equipo en una red?
+traceroute
+ifconfig y traceroute, mal
+la respuesta correcta es ping
+
+
+para copiar una carpeta dentro de otra carpeta o simplemente copiar una carpeta usamos el siguiente comando:
+mkdir copia
+mkdir copia2
+cp -r copia copia2
+
+con esto hemos copiado la carpeta copia dentro de copia2
